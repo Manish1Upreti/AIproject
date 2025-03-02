@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analysis Results</title>
+</head>
+<body>
+    <h2>Sentiment Analysis Results</h2>
+    {{ table_html|safe }}
+
+    <h3>Sentiment Chart</h3>
+    <img src="{% static chart_path %}" alt="Sentiment Chart">
+
+    <br><br>
+    <a href="{% url 'upload_file' %}">Upload Another File</a>
+</body>
+</html>
+

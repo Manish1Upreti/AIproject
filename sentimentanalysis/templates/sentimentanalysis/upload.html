@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload File - Sentiment Analysis</title>
+</head>
+<body>
+    <h2>Upload Excel File for Sentiment Analysis</h2>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Analyze</button>
+    </form>
+</body>
+</html>
