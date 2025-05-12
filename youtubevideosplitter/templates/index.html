@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTube Video Splitter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h2, h3 {
+            color: #333;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Split YouTube Video</h2>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Split Video</button>
+    </form>
+
+
+    {% if clips %}
+        <h3>Download Clips:</h3>
+        <ul>
+            {% for clip in clips %}
+                <li><a href="{{ MEDIA_URL }}{{ clip|urlencode }}" download>Download {{ forloop.counter }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
